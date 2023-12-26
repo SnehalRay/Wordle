@@ -1,0 +1,150 @@
+html, body {
+    margin: 0; /* Remove default margin */
+    height: 100vh; /* Full height of the viewport */
+    display: flex; /* Use flexbox to center #game */
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+    background: var(--default);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --background-dark: #22192E;
+    --background-light: #FFFFFF;
+    --text-color-dark: white;
+    --text-color-light: black; /* Text color for light mode */
+    --empty-dark: #616161;
+    --wrong-dark: #DCD16D;
+    --right-dark: #81C784;
+    --text-color-dark: white;
+
+    --background-light: #FFFFFF; /* Light background color */
+    --empty-light: #D3D3D3; /* Light empty box color */
+    --wrong-light: #BDB76B; /* Light wrong box color */
+    --right-light: #90EE90; /* Light right box color */
+    --text-color-light: #000000; /* Dark text color for light mode */
+
+    /* Initial theme set to dark mode */
+    --background: var(--background-dark);
+    --empty: var(--empty-dark);
+    --wrong: var(--wrong-dark);
+    --right: var(--right-dark);
+    --text-color: var(--text-color-dark);
+}
+
+body {
+    background: var(--background);
+    color: var(--text-color);
+}
+
+#game {
+    width: fit-content; /* Width of #game should fit its content */
+    height: fit-content; /* Height of #game should fit its content */
+    /* No need to manually set width and height */
+    display: flex; /* Use flexbox to center the grid inside #game */
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    position: fixed;
+    height: auto;
+    left: 0px;
+    width: 150px; /* Reduced width for a smaller size */
+    margin-left: calc(50% - 50px); /* Center the logo horizontally */
+    margin-bottom: calc(50% - 220px); /* Center the logo vertically */
+}
+
+
+/* .grid{
+    display: grid;
+    grid-template-rows: repeat(5, auto);
+    grid-template-columns: repeat(5, auto);
+    
+
+} */
+
+.grid {
+    display: grid;
+    grid-template-rows: repeat(6, auto); /* 6 rows for the Wordle grid */
+    grid-template-columns: repeat(5, auto); /* 5 columns for the Wordle grid */
+    gap: 10px; /* Space between boxes */
+    padding: 10px; /* Padding around the grid */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1); /* Optional: adds shadow for depth */
+}
+
+
+.box {
+    border: 3px solid var(--empty);
+    width: 4em; /* Adjust the size as needed */
+    height: 2em; /* Keep it square */
+    border: 3px solid var(--empty);
+    display: flex; /* Changed from grid to flex */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    font-size: 2rem; /* Adjust font size as needed */
+    text-transform: uppercase;
+    color: white;
+    margin: 0; /* Removed margin to control spacing with the gap property in .grid */
+}
+
+
+.box.empty{
+    background: var(--empty);
+
+}
+
+.box.wrong{
+    background: var(--wrong);
+}
+
+.box.right{
+    background: var(--right);
+}
+
+#reveal-answer {
+    position: absolute;
+    top: 750px; /* Adjust as needed */
+    left: 51.5%;
+    transform: translateX(-50%);
+    padding: 10px;
+    margin: 0 auto;
+    background: #81C784;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+#mode-toggle{
+    position: absolute;
+    top: 800px; /* Adjust as needed */
+    left: 51.5%;
+    transform: translateX(-50%);
+    padding: 10px;
+    margin: 0 auto;
+    background: #81C784;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.animated {
+    animation: flip 0.5s ease;
+  }
+
+@keyframes flip {
+    0% {
+      transform: scaleY(1);
+    }
+    50% {
+      transform: scaleY(0);
+    }
+    100% {
+      transform: scaleY(1);
+    }
+  }
+  
